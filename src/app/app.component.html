@@ -1,0 +1,29 @@
+<!-- הפתרון של מקס
+ יציג את הקומפוננט שייצוגו הועבר דרך אירוע הלחיצה מהקומפוננט הילד
+ אל הפונקציה שם יאותחל במחרוזת שנשלחה מהאירוע  -->
+<app-heder></app-heder>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- הפיתרון שלי -->
+<!-- (isRecipesChange/isShoppingListChange) שם המופע של EventEmitter isRecipes/isShoppingListChange שם המשתנה בקומפוננט הראשית 
+ $event שווה ישירות למידע העובר מהאווינט 
+ בנוסף ליד כל קומפוננט יש תנאי שבודק את ערכו לתצוגה - מעין ראטוינג פרמיטיבי -->
+<!-- <app-heder (isRecipesChange)="isRecipes = $event" (isShoppingListChange)="isShoppingList = $event"></app-heder>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <app-recipes *ngIf="isRecipes"></app-recipes>
+            <app-shopping-list *ngIf="isShoppingList"></app-shopping-list>
+        </div>
+    </div>
+</div> -->
+
+

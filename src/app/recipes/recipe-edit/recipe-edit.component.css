@@ -1,0 +1,8 @@
+input.ng-invalid.ng-touched ,
+textarea.ng-invalid.ng-touched{
+    border: 1px solid red;
+}
+/* המחלקת עיצוב הזאת חלה רק על הרכיבים מסוג אינפוט או איזור טקסט 
+שהמשתמש זנח את מילוי התיבות האלה ולאחר שהוא לחץ עליהם ובחר שלא למלא */
+
+

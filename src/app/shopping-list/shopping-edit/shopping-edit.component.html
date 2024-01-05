@@ -1,0 +1,55 @@
+<div class="row">
+    <div class="col-xs-12">
+        <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+            <div class="row">
+                <div class="col-sm-5 form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" class="form-control" 
+                    name="name" ngModel required>
+                </div>
+                <div class="col-sm-2 form-group">
+                    <label for="amount">Amount</label>
+                    <input type="number" id="amount" class="form-control"
+                     name="amount" ngModel required pattern="^[1-9]+[0-9]*$">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <button class="btn btn-success" type="submit"
+                    [disabled]="!f.valid">{{editMode ? 'Update' : 'Add'}}</button>
+                    <button class="btn btn-danger" type="button"
+                    (click)="onDelete()"
+                    *ngIf="editMode">Delete</button>
+                    <button class="btn btn-primary" type="button"
+                    (click)="onClear()">Clear</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- בלחיצה על כפתור השליחה אנחנו שולחים את הטופס עצמו אל תוך הפעולה ,
+בהפנייה המקומית אנחנו מגדירים את הטיפוס שלה שהוא טופס אובייקט
+(ngSubmit)="addIngredient(f)" #f="ngForm" 
+
+יצירת קונטרול לאלמנט הקלט שם והוספנו הגבלה שהשדה הזה חייב להיות מלא
+name="name" ngModel required
+
+יצירת קונטרול לאלמנט הקלט כמות הוספנו הגבלה שאינו יכול לקבל מספרים שליילים
+name="amount" ngModel required pattern="^[1-9]+[0-9]*$"
+
+מניעת שליחת הטופס אם הטופס אינו מאושר על פי ההגבלות שהוספנו
+[disabled]="!f.valid"
+
+מציג את הטקסט בכפתור על פי המאפיין של מצב עריכה 
+<button class="btn btn-success" type="submit"
+[disabled]="!f.valid">{{editMode ? 'Update' : 'Add'}}</button>
+
+ממש אירוע לחיצה לפעולה מחיקה בקומפוננט הכפתור יוצג רק אם המשתמש במצב עריכה
+<button class="btn btn-danger" type="button"
+(click)="onDelete()"
+*ngIf="editMode">Delete</button>
+
+ממש אירוע לחיצה לפעולה שתנקה את תיבות הקלט
+<button class="btn btn-primary" type="button"
+(click)="onClear()">Clear</button> -->

@@ -1,0 +1,133 @@
+<div>
+    <div class="col-xs-12">
+        <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="col-xs-12">
+                    <button type="submit" class="btn btn-success"
+                    [disabled]="!recipeForm.valid">Save</button>
+                    <button type="button" class="btn btn-danger"
+                    [routerLink]="['../']">Cancel</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for ="name">Name</label>
+                        <input type="text" id="name" class="form-control"
+                        formControlName="name">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for ="imagePath">Image URL</label>
+                        <input type="text" id="name" class="form-control"
+                        formControlName="imagePath"
+                        #imagePath>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                      <img [src]="imagePath.value" class="img-responsive">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for ="description">Description</label>
+                        <textarea type="text" id="description" class="form-control"
+                        formControlName="description"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12" formArrayName="ingredients">
+                    <div class="row"
+                     *ngFor="let ingredientCtrl of controls; let i = index"
+                     [formGroupName] = "i"
+                     style="margin-top: 10px;">
+                        <div class="col-xs-8">
+                            <input type="text" class="form-control"
+                            formControlName="name">
+                        </div>
+                    <div class="col-xs-2">
+                        <input type="number" class="form-control"
+                        formControlName="amount">
+                    </div>
+                    <div class="col-xs-2">
+                        <button type="button" class="btn btn-danger"
+                        (click)="onDeleteIngredient(i)">X</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12" style="margin-top: 10px;">
+                    <button type="button" class="btn btn-success" 
+                    (click)="onAddIngredient()">Add Ingredient</button>
+                </div>
+            </div>
+        </div>
+        </form>
+    </div>
+</div>
+
+<!-- סנכרון המידע בין האובייקט לתבנית 
+קבוצת הטופס היא סוג האובייקט העטוף בסוגריים מרובעים כי אנחנו קושרים אליו מידע
+המידע שאנחנו קושרים אליו הוא ההפנייה לאובייקט
+אירוע השליחה כאן מחליף את האירוע של הכפתור שאמור לשלוח בקשה לסרבר ולרענן תדף
+במקום זה הוא מפנה לפעולה שלנו שמטרתה לקבל את פרטי הקלט שנכנסו לטופס מהמשתמש
+<form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+
+אוכף את ההגבלות אם ישנה חריגה מההגבלה הכפתור יושתק
+ <button type="submit" class="btn btn-success"
+[disabled]="!recipeForm.valid">Save</button>
+
+הכפתור ינווט את המשתמש לדף הקודם
+<button type="button" class="btn btn-danger"
+[routerLink]="['../']">Cancel</button>
+
+
+סנכרון הקונטרולים המופיעים באובייקט לתבנית
+<input type="text" id="name" class="form-control"
+formControlName="name">
+<input type="text" id="name" class="form-control"
+formControlName="imagePath">
+<textarea type="text" id="description" class="form-control"
+formControlName="description"></textarea>
+
+סנכרון המערך עם התבנית
+הדיב הזה עוטף את כל התחום שבו אנחנו הולכים להשתמש - להציג את פרטי המרכיבים
+<div class="col-xs-12" formArrayName="ingredients">
+רצים בלולאה על מערך המרכיבים - יש פעולת גט שהופכת את המערך לקונטרולים
+דבר זה נדרש בגרסאות המתקדמות של אנגולר לכן שמו של המערך באובייקט הטופס שונה
+שם הקבוצה של הקונטרולים יהיה האינדקס שלהם במערך
+    <div class="row"
+    *ngFor="let ingredientCtrl of controls; let i = index"
+    [formGroupName] = "i">
+המידע לגבי אותו הקונטרול מתקבל מהערך שנמצא בקונטרול באינדקס הנוכחי 
+עבור השם שלו וכמות מאותו המרכיב
+        <div class="col-xs-8">
+            <input type="text" class="form-control"
+            formControlName="name">
+        </div>
+        <div class="col-xs-2">
+            <input type="number" class="form-control"
+            formControlName="amount">
+        </div>
+    </div>
+</div>
+
+כפתור שמפעיל אירוע הוספת שורת קלט עבור מרכיב חדש לרשימת המרכיבים של המתכון
+ <div class="row">
+   <div class="col-xs-12">
+      <button type="button" class="btn btn-success" 
+              (click)="onAddIngredient()">AddIngredient</button>
+    </div>
+ </div>
+
+
+-->
